@@ -48,21 +48,11 @@ tags_metadata = [
 app = FastAPI(
     title="E-commerce API",
     description=description,
-    version="1.0.0",
-    openapi_tags=tags_metadata,
-    contact={
-        "name": "Seu Nome",
-        "email": "seu.email@exemplo.com",
-    },
-    license_info={
-        "name": "MIT",
-    },
+    openapi_tags=tags_metadata
 )
 
-# Create database tables
 models.Base.metadata.create_all(bind=engine)
 
-# Include routers
 app.include_router(
     product.router,
     prefix="/api/products",
